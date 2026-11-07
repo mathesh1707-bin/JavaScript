@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Pomodoro Timer",
+    "version":"1.0",
+    "description":"This is a timer for focused sessions",
+    "icons":{
+        "128":"icon128.png",
+        "48":"icon48.png",
+        "16":"icon16.png"
+    },
+    "browser_action":{
+        "default_icon":"icon16.png",
+        "default_popup":"popup.html"
+    }
+}
