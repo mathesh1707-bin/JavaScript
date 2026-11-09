@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
+    min-width: 400px;
 }
 input{
     padding: 10px ;
@@ -20,4 +21,18 @@ button{
     padding-bottom: 7px;
     font-weight: bold;
     cursor: pointer;
+}
+
+ul{
+    list-style: none;
+    padding-left: 2px;
+}
+
+li{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+li a{
+    color: green;
 }
