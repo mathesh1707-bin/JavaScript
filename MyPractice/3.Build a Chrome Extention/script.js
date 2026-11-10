@@ -1,18 +1,20 @@
-let myLeads = ["www.youtube.com","www.amazon.com","www.github.com"]
-const inputEl=document.getElementById("input-el")
+let myLeads = []
+
+const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
-const ulEl=document.getElementById("ul-el")
+const ulEl = document.getElementById("ul-el")
+let leadsFromLocalStorage=JSON.parse(localStorage.getItem("myLeads"))
 displayLeads()
+console.log(leadsFromLocalStorage)
 inputBtn.addEventListener("click", function () {
     let lead = inputEl.value
     if (lead != '') {
         myLeads.push(lead)
-        inputEl.value=""
+        inputEl.value = ""
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
     }
     displayLeads()
-    console.log(myLeads)
 })
-
 function displayLeads() {
     let listItems=""
     for (let i = 0; i < myLeads.length; i++) {
