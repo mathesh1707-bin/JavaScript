@@ -2,10 +2,29 @@ let myLeads = []
 
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
+const deleteBtn=document.getElementById("delete-btn")
 const ulEl = document.getElementById("ul-el")
+
 let leadsFromLocalStorage=JSON.parse(localStorage.getItem("myLeads"))
-displayLeads()
-console.log(leadsFromLocalStorage)
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage;
+    render(myLeads)
+}
+
+function render(leads) {
+    let listItems=""
+    for (let i = 0; i < leads.length; i++) {
+        // listItems += "<li><a target='_blank' href='#'>" + myLeads[i] + "</a></li>"
+        listItems += `
+        <li>
+            <a target='_blank' href=https://${leads[i]}> 
+                ${leads[i]} 
+            </a>
+        </li>`
+    }
+    ulEl.innerHTML=listItems
+}
+
 inputBtn.addEventListener("click", function () {
     let lead = inputEl.value
     if (lead != '') {
@@ -13,18 +32,11 @@ inputBtn.addEventListener("click", function () {
         inputEl.value = ""
         localStorage.setItem("myLeads", JSON.stringify(myLeads))
     }
-    displayLeads()
+    render(myLeads) 
 })
-function displayLeads() {
-    let listItems=""
-    for (let i = 0; i < myLeads.length; i++) {
-        // listItems += "<li><a target='_blank' href='#'>" + myLeads[i] + "</a></li>"
-        listItems += `
-        <li>
-            <a target='_blank' href=https://${myLeads[i]}> 
-                ${myLeads[i]} 
-            </a>
-        </li>`
-    }
-    ulEl.innerHTML=listItems
-}
+
+deleteBtn.addEventListener("dblclick", function () {
+    myLeads = []
+    localStorage.clear()
+    render(myLeads)
+})
